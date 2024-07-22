@@ -496,6 +496,9 @@ export const deviceManager = {
   ],
 };
 
+
+var UpdatepageId = null
+
 export const addEditorCommand = (editor) => {
   // Commands
   editor.Commands.add("set-device-desktop", {
@@ -505,10 +508,14 @@ export const addEditorCommand = (editor) => {
     run: (editor) => editor.setDevice("Mobile"),
   });
 
+
+
+
   // Save Button
   editor.Commands.add("saveDb", {
     run: (editor, sender) => {
       sender && sender.set("active");
+      console.log("editor",UpdatepageId)
       editor.store();
       alert("Content Save id Db Successfully")
     },
@@ -542,6 +549,7 @@ export const addEditorCommand = (editor) => {
 };
 
 export const storageSetting = (pageId) => {
+  UpdatepageId = pageId
   return {
     type: "remote",
     stepsBeforeSave: 3,

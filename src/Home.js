@@ -1,23 +1,63 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createPage } from "./redux/actions/pageAction";
+import { createCopiedPage, createPage } from "./redux/actions/pageAction";
 
 const Home = () => {
   const [name, setName] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [copiedData, setCopiedData] = useState({})
   const dispatch = useDispatch();
 
   const { pageStore } = useSelector((state) => state);
   const { pages } = pageStore;
 
-  const handleSubmit = async () => {
-    if (!name) {
-      setIsValid(false);
-      return;
+
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    if (isUpdate) {
+
+      setCopiedData((prev) => ({ ...prev, name: newValue }));
+
     }
-    createPage(name)(dispatch);
+    else {
+      setName(newValue)
+    }
+
+  }
+
+  const handleSubmit = async () => {
+    // if (!name) {
+    //   setIsValid(false);
+    //   return;
+    // }
+console.log('isUpdate', isUpdate)
+    if (isUpdate) {
+      createCopiedPage(copiedData)(dispatch)
+
+    } else {
+      createPage(name)(dispatch)
+    }
+    setName('')
+    setCopiedData({})
+    setIsUpdate(false)
+
   };
+
+
+  const handlePage = (page) => {
+    setIsUpdate(true);
+    const { _id, name, ...rest } = page
+    setCopiedData({
+      _id,
+      name
+    })
+  }
+
+  console.log('copiedData', copiedData)
+
+
 
   return (
     <div className="container">
@@ -36,14 +76,13 @@ const Home = () => {
                 </label>
                 <input
                   type="text"
-                  className={`form-control form-control-sm ${
-                    isValid ? "" : "is-invalid"
-                  }`}
+                  className={`form-control form-control-sm ${isValid ? "" : "is-invalid"
+                    }`}
                   id="name"
                   name="name"
                   placeholder="Name of Page"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={isUpdate ? copiedData?.name : name}
+                  onChange={handleChange}
                 />
                 {!isValid && (
                   <div className="invalid-feedback">
@@ -83,15 +122,16 @@ const Home = () => {
             <tbody>
               {pages
                 ? pages.map((page) => (
-                    <tr key={page._id}>
-                      <td>{page._id}</td>
-                      <td>{page.name}</td>
-                      <td>{page.slug}</td>
-                      <td>
-                        <Link to={`/editor/${page._id}`}>Edit</Link>
-                      </td>
-                    </tr>
-                  ))
+                  <tr key={page._id}>
+                    <td>{page._id}</td>
+                    <td>{page.name}</td>
+                    <td>{page.slug}</td>
+                    <td>
+                      <Link to={`/editor/${page._id}`}>Edit</Link>
+                      <button onClick={() => handlePage(page)} type="button" class="btn btn-outline-primary mx-4">Copy</button>
+                    </td>
+                  </tr>
+                ))
                 : "No Page"}
             </tbody>
           </table>

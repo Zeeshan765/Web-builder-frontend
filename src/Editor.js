@@ -33,6 +33,7 @@ const Editor = () => {
     const editor = geditorConfig(assets, pageId);
     setEditor(editor);
   }, [pageId, assets]);
+
   return (
     <div className="App">
       <div

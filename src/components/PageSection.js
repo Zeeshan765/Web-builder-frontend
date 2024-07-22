@@ -29,14 +29,17 @@ export default function PageSection({ pages }) {
   };
   return (
     <div className="my-2 d-flex flex-column">
-      <button
+      {/* <button
         type="button"
         className="btn btn-outline-secondary btn-sm mb-2 mx-2"
         onClick={() => setShow(!show)}
       >
         <i className="fa fa-plus"></i>
         Add Page
-      </button>
+      </button> */}
+     <h3>
+     Page Templates
+     </h3>
       <form id="create-page">
         <Modal
           show={show}

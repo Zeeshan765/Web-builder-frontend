@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Home}></Route>
-        <Route exact path="/editor/:pageId" component={Editor}></Route>
+        <Route exact path="/editor" component={Editor}></Route>
       </Switch>
     </Router>
   );
