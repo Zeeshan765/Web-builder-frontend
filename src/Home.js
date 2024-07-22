@@ -32,7 +32,6 @@ const Home = () => {
     //   setIsValid(false);
     //   return;
     // }
-console.log('isUpdate', isUpdate)
     if (isUpdate) {
       createCopiedPage(copiedData)(dispatch)
 
@@ -55,7 +54,6 @@ console.log('isUpdate', isUpdate)
     })
   }
 
-  console.log('copiedData', copiedData)
 
 
 

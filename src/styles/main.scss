@@ -98,21 +98,21 @@ html {
 }
 
 .gjs-two-color {
-  color: #990011ff;
+  color: rgb(10, 10, 10);
 }
 
 .gjs-three-bg {
-  background-color: #990011ff;
+  // background-color: ;
   color: #fcf6f5ff;
 }
 
 .gjs-four-color,
 .gjs-four-color-h:hover {
-  color: #990011ff;
+  color: rgb(10, 10, 10);
 }
 
 .gjs-pn-btn {
-  border: 1px solid #990011ff;
+  border: 1px solid rgb(10, 10, 10);
 }
 
 // Customize Bootstrap CSS
@@ -126,7 +126,7 @@ html {
 
 .btn {
   .fa {
-    color: #990011ff;
+    color: rgb(10, 10, 10);
   }
   &:hover {
     .fa {
@@ -139,7 +139,7 @@ html {
 
 .btn-save {
   color: white; /* White text */
-  background-color:  #990011ff; /* Red background */
+  background-color:  rgb(10, 10, 10); /* Red background */
   border: none;
   padding: 8px 15px;
   cursor: pointer;

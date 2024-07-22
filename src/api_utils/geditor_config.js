@@ -47,7 +47,7 @@ const geditorConfig = (assets, pageId) => {
     selectorManager: selectorManager,
     panels: panels,
     deviceManager: deviceManager,
-    assetManager: { assets: assets, upload: false },
+    assetManager: { assets: assets, upload: true },
     storageManager: storageSetting(pageId),
     canvas: {
       styles: styles,
@@ -56,7 +56,7 @@ const geditorConfig = (assets, pageId) => {
     plugins: [
       tailwindComponent,
       gjsBlockBasic,
-      swiperComponent,
+      // swiperComponent,
       grapesjsBlockBootstrap,
       grapesjsPluginExport,
       grapesjsStyleBg,
@@ -65,7 +65,7 @@ const geditorConfig = (assets, pageId) => {
     pluginsOpts: {
       tailwindComponent: {},
       gjsBlockBasic: {},
-      swiperComponent: {},
+      // swiperComponent: {},
       grapesjsBlockBootstrap: {},
       grapesjsPluginExport: {},
       grapesjsStyleBg: {},
